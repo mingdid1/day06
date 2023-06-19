@@ -34,27 +34,32 @@ public class TestClass06 {
 				pPw = sc.next();
 				
 				for (i= 0; i < id.size(); i++) {
-					if (pId.contains(id.get(i)) && pPw.contains(pw.get(i))){
+					if (id.contains(pId) && pw.contains(pPw)){
 						System.out.println("로그인 성공");
 						
 						System.out.println("========================");
-						System.out.println("1.정보수정       2.회원탈퇴");
-						int put= sc.nextInt();
+						System.out.println("1.정보수정\t\t2.회원탈퇴");
 						System.out.println("========================");
+						int put= sc.nextInt();
 						if (put == 1) {
 							System.out.println("변경할 pw : ");
 							String chPw = sc.next();
 							pw.set(i, chPw);
+							System.out.println("비밀번호가 변경되었습니다");
+							break;
 						}
 						else if (put == 2) {
 							id.remove(i);
 							pw.remove(i);
 							System.out.println("계정이 삭제되었습니다");
+							break;
 						}
-					}else if (pId.contains(id.get(i)) && !(pPw.contains(pw.get(i)))) {
+					}else if (id.contains(pId) && !(pw.contains(pPw))) {
 						System.out.println("비밀번호가 틀렸습니다");
+						break;
 					}else {
 						System.out.println("계정이 존재하지 않습니다");
+						break;
 					}
 				}
 				
@@ -83,10 +88,10 @@ public class TestClass06 {
 				if (id.size() == 0) {
 					System.out.println("등록된 회원이 없습니다");
 				}
-				System.out.println("ID          pw");
+				System.out.println("ID\tPW");
 				System.out.println("================");
 				for (i = 0; i<id.size(); i++) {
-					System.out.print(id.get(i)+ "            " + pw.get(i));
+					System.out.println(id.get(i)+ "\t" + pw.get(i));
 				}
 				break;
 			}
